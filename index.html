@@ -10,7 +10,7 @@
 <body>
   <!-- Vídeo de fundo -->
   <video autoplay loop id="background-video">
-    <source id="video-source" src="" type="video/mp4">
+    <source id="video-source" src="videoDesk.mp4" type="video/mp4">
     Seu navegador não suporta vídeo em HTML5.
   </video>
 
@@ -19,12 +19,18 @@
     <a href="https://maps.app.goo.gl/4jqWgEtC7bAxEA529" target="_blank" id="localizacao-btn" class="custom-button">Ver Localização</a>
   </div>
 
-  <!-- Script para escolher o vídeo conforme o dispositivo -->
+  <!-- Script corrigido -->
   <script>
-    const videoSource = document.getElementById('video-source');
-    const isMobile = window.innerWidth <= 768;
-    videoSource.src = isMobile ? 'VideoMob.mp4' : 'videoDesk.mp4';
-    document.getElementById('background-video').load();
+    window.onload = function () {
+      const video = document.getElementById('background-video');
+      const videoSource = document.getElementById('video-source');
+      const isMobile = window.innerWidth <= 768;
+      
+      // Carrega o vídeo apropriado com música
+      videoSource.src = isMobile ? 'VideoMob.mp4' : 'videoDesk.mp4';
+      video.load();
+      video.play(); // Garante que o vídeo toque automaticamente com áudio
+    };
   </script>
 </body>
 </html>
