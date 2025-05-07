@@ -9,10 +9,14 @@
 </head>
 <body>
   <!-- Vídeo de fundo -->
-  <video autoplay loop id="background-video">
-    <source id="video-source" src="videoDesk.mp4" type="video/mp4">
+  <video id="background-video" controls>
+    <source id="video-source" src="" type="video/mp4">
     Seu navegador não suporta vídeo em HTML5.
   </video>
+  
+  <div id="overlay">
+    <button id="play-button">▶</button>
+  </div>
 
   <!-- Conteúdo sobreposto ao vídeo -->
   <div id="container">
@@ -21,16 +25,21 @@
 
   <!-- Script corrigido -->
   <script>
-    window.onload = function () {
-      const video = document.getElementById('background-video');
-      const videoSource = document.getElementById('video-source');
-      const isMobile = window.innerWidth <= 768;
-      
-      // Carrega o vídeo apropriado com música
-      videoSource.src = isMobile ? 'VideoMob.mp4' : 'videoDesk.mp4';
-      video.load();
-      video.play(); // Garante que o vídeo toque automaticamente com áudio
-    };
+     const video = document.getElementById('background-video');
+    const source = document.getElementById('video-source');
+    const overlay = document.getElementById('overlay');
+    const playButton = document.getElementById('play-button');
+
+    // Define vídeo certo para cada dispositivo
+    const isMobile = window.innerWidth <= 768;
+    source.src = isMobile ? 'VideoMob.mp4' : 'videoDesk.mp4';
+    video.load();
+
+    // Clicar no botão inicia o vídeo
+    playButton.addEventListener('click', () => {
+      video.play();
+      overlay.style.display = 'none';
+    });
   </script>
 </body>
 </html>
