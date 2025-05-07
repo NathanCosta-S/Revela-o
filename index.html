@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="logo01.ico" type="image/x-icon">
+  <title>Chá Revelação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Vídeo de fundo -->
+  <video autoplay loop id="background-video">
+    <source id="video-source" src="" type="video/mp4">
+    Seu navegador não suporta vídeo em HTML5.
+  </video>
+
+  <!-- Conteúdo sobreposto ao vídeo -->
+  <div id="container">
+    <a href="https://maps.app.goo.gl/4jqWgEtC7bAxEA529" target="_blank" id="localizacao-btn" class="custom-button">Ver Localização</a>
+  </div>
+
+  <!-- Script para escolher o vídeo conforme o dispositivo -->
+  <script>
+    const videoSource = document.getElementById('video-source');
+    const isMobile = window.innerWidth <= 768;
+    videoSource.src = isMobile ? 'VideoMob.mp4' : 'videoDesk.mp4';
+    document.getElementById('background-video').load();
+  </script>
+</body>
+</html>
